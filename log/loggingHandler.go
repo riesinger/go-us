@@ -15,15 +15,18 @@ type StatusResponseWriter struct {
 	w             http.ResponseWriter
 }
 
-func (StatusResponseWriter srw) Status() int {
+// Status returns the ResponseWriter's HTTP status code
+func (srw StatusResponseWriter) Status() int {
 	return srw.status
 }
 
-func (StatusResponseWriter srw) Write(content []byte) {
+// Write writes bytes to the client
+func (srw StatusResponseWriter) Write(content []byte) {
 	srw.w.Write(content)
 }
 
-func (StatusResponseWriter srw) WriteHeader(status int) {
+// WriteHeader writes a HTTP status code to the client
+func (srw StatusResponseWriter) WriteHeader(status int) {
 	if !srw.statusWritten {
 		srw.status = status
 		srw.statusWritten = true
