@@ -16,7 +16,6 @@ type StatusResponseWriter struct {
 
 // Status returns the ResponseWriter's HTTP status code
 func (srw *StatusResponseWriter) Status() int {
-	Info(context.Background(), "Getting status", Int("code", srw.status))
 	return srw.status
 }
 
